@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - Xeron&#39;s Blog</title>
+        <link>https://Xeron2000.github.io/tags/</link>
+        <description>Tags - Tag - Xeron&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cw48565@gmail.com (Xeron)</managingEditor>
+            <webMaster>cw48565@gmail.com (Xeron)</webMaster><atom:link href="https://Xeron2000.github.io/tags/" rel="self" type="application/rss+xml" /></channel>
+</rss>

@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Xeron&#39;s Blog</title>
+        <link>https://Xeron2000.github.io/</link>
+        <description>I&#39;ll make a cup of coffee</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cw48565@gmail.com (Xeron)</managingEditor>
+            <webMaster>cw48565@gmail.com (Xeron)</webMaster><lastBuildDate>Fri, 12 Jan 2024 19:25:17 &#43;0800</lastBuildDate>
+            <atom:link href="https://Xeron2000.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>First_post</title>
+    <link>https://Xeron2000.github.io/posts/first_post/</link>
+    <pubDate>Fri, 12 Jan 2024 19:25:17 &#43;0800</pubDate>
+    <author>Xeron</author>
+    <guid>https://Xeron2000.github.io/posts/first_post/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
