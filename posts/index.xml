@@ -4,7 +4,15 @@
         <link>https://Xeron2000.github.io/posts/</link>
         <description>All Posts | Xeron&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cw48565@gmail.com (Xeron)</managingEditor>
-            <webMaster>cw48565@gmail.com (Xeron)</webMaster><lastBuildDate>Fri, 12 Jan 2024 19:25:17 &#43;0800</lastBuildDate><atom:link href="https://Xeron2000.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>cw48565@gmail.com (Xeron)</webMaster><lastBuildDate>Tue, 23 Jan 2024 12:35:45 &#43;0800</lastBuildDate><atom:link href="https://Xeron2000.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>启动neovim报错</title>
+    <link>https://Xeron2000.github.io/posts/nvimerror/</link>
+    <pubDate>Tue, 23 Jan 2024 12:35:45 &#43;0800</pubDate>
+    <author>Xeron</author>
+    <guid>https://Xeron2000.github.io/posts/nvimerror/</guid>
+    <description><![CDATA[使用unstable源安装neovim过程中无错误，启动nvim报错如下 &gt; nvim vim/_init_packages.lua: cannot load incompatible bytecode stack traceback: [C]: at 0x5598aeddde5c [C]: at 0x7f25e20a9370 E970: Failed to initialize builtin lua modules 解决方法从源代码构建ne]]></description>
+</item>
+<item>
     <title>First_post</title>
     <link>https://Xeron2000.github.io/posts/first_post/</link>
     <pubDate>Fri, 12 Jan 2024 19:25:17 &#43;0800</pubDate>
