@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>neovim - Tag - Xeron&#39;s Blog</title>
+        <link>https://Xeron2000.github.io/tags/neovim/</link>
+        <description>neovim - Tag - Xeron&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cw48565@gmail.com (Xeron)</managingEditor>
+            <webMaster>cw48565@gmail.com (Xeron)</webMaster><lastBuildDate>Tue, 23 Jan 2024 12:35:45 &#43;0800</lastBuildDate><atom:link href="https://Xeron2000.github.io/tags/neovim/" rel="self" type="application/rss+xml" /><item>
+    <title>启动neovim报错</title>
+    <link>https://Xeron2000.github.io/posts/nvimerror/</link>
+    <pubDate>Tue, 23 Jan 2024 12:35:45 &#43;0800</pubDate>
+    <author>Xeron</author>
+    <guid>https://Xeron2000.github.io/posts/nvimerror/</guid>
+    <description><![CDATA[ubuntu23.04 2024.1.23 使用unstable源安装neovim过程中无错误，启动nvim报错如下 &gt; nvim vim/_init_packages.lua: cannot load incompatible bytecode stack traceback: [C]: at 0x5598aeddde5c [C]: at 0x7f25e20a9370 E970: Failed to initialize builtin lua modules 解决方法从源代码构建]]></description>
+</item>
+</channel>
+</rss>
