@@ -1,1 +1,0 @@
-import{_ as a,c as i,o as n,a2 as l}from"./chunks/framework.B9nwU1SX.js";const g=JSON.parse('{"title":"PureVex - 项目架构文档","description":"","frontmatter":{},"headers":[],"relativePath":"CLAUDE.md","filePath":"CLAUDE.md"}'),t={name:"CLAUDE.md"};function e(h,s,p,r,k,E){return n(),i("div",null,s[0]||(s[0]=[l("",72)]))}const d=a(t,[["render",e]]);export{g as __pageData,d as default};
