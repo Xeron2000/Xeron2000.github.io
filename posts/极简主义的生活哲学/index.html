@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>极简主义的生活哲学 - Su 素</title>
+    <title>Su 素</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22></svg>">
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -212,34 +214,7 @@
             display: inline;
         }
 
-        .post-content pre:hover .copy-button {
-            opacity: 1;
-        }
-
-        .copy-button {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 6px 12px;
-            font-size: 0.8em;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.2s ease, background-color 0.2s ease;
-            font-family: var(--font-mono);
-        }
-
-        .copy-button:hover {
-            background-color: #5a6268;
-        }
-
-        .copy-button.copied {
-            background-color: #28a745;
-        }
-
+  
          
         .post-content :not(pre) > code {
             background-color: #404040;
@@ -283,75 +258,5 @@
     &copy; 2025 Su 素. Text Only.
 </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            const codeBlocks = document.querySelectorAll('.post-content pre, .post-content .highlight');
-
-            codeBlocks.forEach(function(block) {
-                
-                const copyButton = document.createElement('button');
-                copyButton.className = 'copy-button';
-                copyButton.textContent = '复制';
-
-                
-                block.style.position = 'relative';
-                block.appendChild(copyButton);
-
-                
-                copyButton.addEventListener('click', function() {
-                    const codeElement = block.querySelector('code') || block.querySelector('pre');
-                    const text = codeElement.textContent || codeElement.innerText;
-
-                    
-                    if (navigator.clipboard && window.isSecureContext) {
-                        navigator.clipboard.writeText(text).then(function() {
-                            showCopySuccess(copyButton);
-                        }).catch(function() {
-                            fallbackCopy(text, copyButton);
-                        });
-                    } else {
-                        
-                        fallbackCopy(text, copyButton);
-                    }
-                });
-            });
-
-            function showCopySuccess(button) {
-                const originalText = button.textContent;
-                button.textContent = '已复制';
-                button.classList.add('copied');
-
-                setTimeout(function() {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            }
-
-            function fallbackCopy(text, button) {
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-999999px';
-                textArea.style.top = '-999999px';
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-
-                try {
-                    document.execCommand('copy');
-                    showCopySuccess(button);
-                } catch (err) {
-                    console.error('复制失败:', err);
-                    button.textContent = '复制失败';
-                    setTimeout(function() {
-                        button.textContent = '复制';
-                    }, 2000);
-                } finally {
-                    document.body.removeChild(textArea);
-                }
-            }
-        });
-    </script>
-</body>
+    </body>
 </html>
