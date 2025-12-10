@@ -237,84 +237,66 @@
 
     <main id="app">
         
-<ul class="archive-list">
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-09-06</span>
-        <a href="https://blog.040304.xyz/posts/claude-resources/" class="archive-title">Claude Code&amp;Codex 资源推荐</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-30</span>
-        <a href="https://blog.040304.xyz/posts/wayland-input/" class="archive-title">Wayland &#43; Electron 中文输入法在高频输入下乱序的解决方案</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/vitepress-hidden/" class="archive-title">VitePress 隐藏文章功能实现</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/friend-monitor/" class="archive-title">实现自动友链监测功能</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-25</span>
-        <a href="https://blog.040304.xyz/posts/web3-transaction/" class="archive-title">解决 Web3 交互中的 &#34;Replacement Transaction Underpriced&#34; 错误</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-18</span>
-        <a href="https://blog.040304.xyz/posts/pycache-fix/" class="archive-title">如何处理误提交的 `__pycache__`</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-29</span>
-        <a href="https://blog.040304.xyz/posts/trading-thoughts/" class="archive-title">个人交易感悟</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-14</span>
-        <a href="https://blog.040304.xyz/posts/nvim-clipboard/" class="archive-title">在 Nvim 中避免 d 键删除文本时影响剪贴板</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-25</span>
-        <a href="https://blog.040304.xyz/posts/direnv-ssh/" class="archive-title">使用direnv管理本地多个 GitHub 账号 SSH 密钥</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-16</span>
-        <a href="https://blog.040304.xyz/posts/ocr-script/" class="archive-title">ArchLinux Hyprland的OCR截图脚本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-08-02</span>
-        <a href="https://blog.040304.xyz/posts/ens-registration/" class="archive-title">Ens域名注册事项</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-06-22</span>
-        <a href="https://blog.040304.xyz/posts/neovim-replace/" class="archive-title">Neovim批量替换文本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/web-design/" class="archive-title">Web设计的历史轮回</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/text-essence/" class="archive-title">回归文字的本质</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/minimalism-life/" class="archive-title">极简主义的生活哲学</a>
-    </li>
-    
-</ul>
+<article>
+    <div class="post-header">
+        <h1 class="post-title">ArchLinux Hyprland的OCR截图脚本</h1>
+        <div class="post-meta">发布于 2024-10-16</div>
+    </div>
+    <div class="post-content">
+        <h1 id="archlinux-hyprland的-ocr-截图脚本">ArchLinux Hyprland的 OCR 截图脚本</h1>
+<p>在hyprland一直没找到舒服的OCR的软件，先使用这个脚本代替一下</p>
+<h2 id="所需软件">所需软件</h2>
+<p>要运行 <code>ocr_screenshot.sh</code> 脚本，需要安装以下软件包：</p>
+<ol>
+<li><strong>Tesseract</strong>：用于从图像中提取文本的 OCR 引擎</li>
+<li><strong>Grim</strong>：在 Wayland 中截取屏幕的工具</li>
+<li><strong>Slurp</strong>：在 Wayland 中选择屏幕区域的工具</li>
+<li><strong>wl-clipboard</strong>：用于在 Wayland 中操作剪贴板的工具</li>
+</ol>
+<h3 id="安装命令">安装命令</h3>
+<p>在终端中运行以下命令以安装所需的软件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S tesseract grim slurp wl-clipboard
+</span></span></code></pre></div><h3 id="脚本内容">脚本内容</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Take a screenshot with Grim and Slurp</span>
+</span></span><span style="display:flex;"><span>grim -g <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>slurp<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> /tmp/screenshot.png
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform OCR with both Chinese and English language support and copy the result to clipboard</span>
+</span></span><span style="display:flex;"><span>tesseract /tmp/screenshot.png - -l chi_sim+eng | wl-copy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Optionally, remove the screenshot file</span>
+</span></span><span style="display:flex;"><span>rm /tmp/screenshot.png
+</span></span></code></pre></div><h3 id="赋予执行权限和移动脚本">赋予执行权限和移动脚本</h3>
+<ol>
+<li>
+<p>将 <code>ocr_screenshot.sh</code> 脚本保存到主目录（如 <code>~/ocr_screenshot.sh</code>）</p>
+</li>
+<li>
+<p>赋予脚本执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/ocr_screenshot.sh
+</span></span></code></pre></div></li>
+<li>
+<p>移动脚本到 <code>/usr/local/bin</code> 目录：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mv ~/ocr_screenshot.sh /usr/local/bin/
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="hyprland-配置">Hyprland 配置</h2>
+<ol>
+<li>
+<p>打开Hyprland 配置文件，通常位于 <code>~/.config/hypr/hyprland.conf</code></p>
+</li>
+<li>
+<p>添加以下行，将 <code>SUPER + O</code> 键组合绑定为执行 <code>ocr_screenshot.sh</code> 脚本：</p>
+<pre tabindex="0"><code>bind = SUPER, O, exec, ocr_screenshot.sh
+</code></pre></li>
+</ol>
+
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
 
     </main>
 

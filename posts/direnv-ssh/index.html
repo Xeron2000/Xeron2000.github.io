@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Su 素</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22></svg>">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --meta-color: #a0a0a0;
+            --link-color: #d0d0d0;
+            --accent-color: #f0f0f0;
+            --font-main: "Georgia", "Times New Roman", "Songti SC", "SimSun", serif;
+            --font-mono: "Menlo", "Monaco", "Courier New", monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-size: 16px;
+        }
+
+         
+        header {
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .site-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--meta-color);
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+         
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: all 0.2s;
+        }
+        a:hover {
+            background-color: rgba(208, 208, 208, 0.1);
+        }
+
+         
+        .archive-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .archive-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+        }
+
+        .archive-date {
+            font-family: var(--font-mono);
+            color: var(--meta-color);
+            font-size: 0.85em;
+            width: 110px;
+            flex-shrink: 0;
+        }
+
+        .archive-title {
+            font-weight: normal;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+         
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .post-meta {
+            font-family: var(--font-mono);
+            color: var(--meta-color);
+            font-size: 0.9em;
+        }
+
+        .post-content {
+            text-align: justify;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5em;
+        }
+
+        .post-content h2 {
+            font-size: 1.4em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+        .post-content blockquote {
+            margin: 1.5em 0;
+            padding: 1em 1.5em;
+            background-color: rgba(255, 255, 255, 0.05);
+            font-style: italic;
+            color: var(--meta-color);
+        }
+
+        .post-content blockquote p {
+            margin-bottom: 0;
+        }
+
+         
+        .about-section {
+            margin-bottom: 50px;
+        }
+
+        .friends-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .friend-item {
+            margin-bottom: 15px;
+        }
+
+        .friend-item a {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .friend-desc {
+            color: var(--meta-color);
+            font-size: 0.9em;
+        }
+
+         
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--meta-color);
+            font-family: var(--font-mono);
+        }
+
+         
+        .post-content pre,
+        .post-content .highlight {
+            position: relative;
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 1.5em 0;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .post-content pre code,
+        .post-content .highlight pre {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            color: var(--text-color);
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
+
+         
+        .post-content .highlight pre {
+            background: none !important;
+            color: var(--text-color) !important;
+        }
+
+        .post-content .highlight pre code span {
+            display: inline;
+        }
+
+  
+         
+        .post-content :not(pre) > code {
+            background-color: #404040;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <a href="https://blog.040304.xyz/" class="site-title">Su 素</a>
+    <nav>
+        <a href="https://blog.040304.xyz/">首页</a>
+        <a href="https://blog.040304.xyz/about/">关于 & 友链</a>
+    </nav>
+</header>
+
+    <main id="app">
+        
+<article>
+    <div class="post-header">
+        <h1 class="post-title">使用direnv管理本地多个 GitHub 账号 SSH 密钥</h1>
+        <div class="post-meta">发布于 2024-10-25</div>
+    </div>
+    <div class="post-content">
+        <p>使用 <strong>direnv</strong> 可以为每个项目自动加载环境变量，从而为每个目录加载单独的环境配置，实现项目目录中的 Git 配置自动切换</p>
+<h2 id="安装-direnv">安装 direnv</h2>
+<h3 id="在-ubuntu-和-arch-linux-上安装">在 Ubuntu 和 Arch Linux 上安装</h3>
+<ol>
+<li>
+<p><strong>安装 direnv：</strong></p>
+<p>在 Ubuntu 上运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install direnv
+</span></span></code></pre></div><p>在 Arch Linux 上运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S direnv
+</span></span></code></pre></div></li>
+<li>
+<p><strong>配置 shell 环境：</strong></p>
+<p>在 shell 配置文件中添加以下内容：</p>
+<ul>
+<li>
+<p>对于 <strong>bash</strong>，在 <code>~/.bashrc</code> 中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>direnv hook bash<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>对于 <strong>zsh</strong>，在 <code>~/.zshrc</code> 中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>direnv hook zsh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>对于 <strong>Fish</strong>，在 <code>~/.config/fish/config.fish</code> 中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fish" data-lang="fish"><span style="display:flex;"><span><span style="color:#a6e22e">direnv</span> hook fish <span style="color:#f92672">|</span> source
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>重新加载 shell 配置：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc   <span style="color:#75715e"># 或者 source ~/.zshrc 或 source ~/.config/fish/config.fish</span>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="设置-ssh-配置文件">设置 SSH 配置文件</h2>
+<p>编辑 <code>~/.ssh/config</code> 文件（如果不存在，则创建该文件），并添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Host github.com
+</span></span><span style="display:flex;"><span>    HostName github.com
+</span></span><span style="display:flex;"><span>    User git
+</span></span><span style="display:flex;"><span>    IdentityFile ~/.ssh/id_rsa
+</span></span></code></pre></div><p>根据需要更改 <code>IdentityFile</code> 的路径</p>
+<h2 id="设置-envrc">设置 <code>.envrc</code></h2>
+<p>在项目目录下创建 <code>.envrc</code> 文件，添加以下配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 设置项目特定的 Git 用户信息</span>
+</span></span><span style="display:flex;"><span>git config user.name <span style="color:#e6db74">&#34;Project Specific Name&#34;</span>
+</span></span><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;project_specific_email@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 指定 SSH 密钥路径</span>
+</span></span><span style="display:flex;"><span>export SSH_KEY_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.ssh/id_rsa_custom&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果 SSH 密钥存在，则添加到 ssh-agent</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$SSH_KEY_PATH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    ssh-add <span style="color:#e6db74">&#34;</span>$SSH_KEY_PATH<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><h3 id="允许-envrc-文件">允许 <code>.envrc</code> 文件</h3>
+<p>进入项目目录后，运行以下命令以使 <strong>direnv</strong> 允许并加载 <code>.envrc</code> 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>direnv allow
+</span></span></code></pre></div>
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
+
+    </main>
+
+    <footer>
+    &copy; 2025 Su 素. Text Only.
+</footer>
+
+    </body>
+</html>

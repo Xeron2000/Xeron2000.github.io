@@ -237,84 +237,31 @@
 
     <main id="app">
         
-<ul class="archive-list">
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-09-06</span>
-        <a href="https://blog.040304.xyz/posts/claude-resources/" class="archive-title">Claude Code&amp;Codex 资源推荐</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-30</span>
-        <a href="https://blog.040304.xyz/posts/wayland-input/" class="archive-title">Wayland &#43; Electron 中文输入法在高频输入下乱序的解决方案</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/vitepress-hidden/" class="archive-title">VitePress 隐藏文章功能实现</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/friend-monitor/" class="archive-title">实现自动友链监测功能</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-25</span>
-        <a href="https://blog.040304.xyz/posts/web3-transaction/" class="archive-title">解决 Web3 交互中的 &#34;Replacement Transaction Underpriced&#34; 错误</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-18</span>
-        <a href="https://blog.040304.xyz/posts/pycache-fix/" class="archive-title">如何处理误提交的 `__pycache__`</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-29</span>
-        <a href="https://blog.040304.xyz/posts/trading-thoughts/" class="archive-title">个人交易感悟</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-14</span>
-        <a href="https://blog.040304.xyz/posts/nvim-clipboard/" class="archive-title">在 Nvim 中避免 d 键删除文本时影响剪贴板</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-25</span>
-        <a href="https://blog.040304.xyz/posts/direnv-ssh/" class="archive-title">使用direnv管理本地多个 GitHub 账号 SSH 密钥</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-16</span>
-        <a href="https://blog.040304.xyz/posts/ocr-script/" class="archive-title">ArchLinux Hyprland的OCR截图脚本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-08-02</span>
-        <a href="https://blog.040304.xyz/posts/ens-registration/" class="archive-title">Ens域名注册事项</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-06-22</span>
-        <a href="https://blog.040304.xyz/posts/neovim-replace/" class="archive-title">Neovim批量替换文本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/web-design/" class="archive-title">Web设计的历史轮回</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/text-essence/" class="archive-title">回归文字的本质</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/minimalism-life/" class="archive-title">极简主义的生活哲学</a>
-    </li>
-    
-</ul>
+<article>
+    <div class="post-header">
+        <h1 class="post-title">Ens域名注册事项</h1>
+        <div class="post-meta">发布于 2024-08-02</div>
+    </div>
+    <div class="post-content">
+        <h2 id="ens域名注册事项">Ens域名注册事项</h2>
+<p>打开<a href="https://app.ens.domains/">Ens</a>，搜索想要的域名，比如说<code>test1234.eth</code>，我使用Binance的web3钱包，所以选择<code>WalletConnect</code>。也可以选择别的钱包，比如说MetaMask。建议一次注册5年以上，这样网络费只需支付一次，钱包里需要有以太坊主网的eth，别的链上的eth使用不了，一次最好多转一点eth，Ethereum(ERC20)网络转账手续费要4刀，多次转账损耗很多</p>
+<p>注册时勾选作为主名称使用会解析你的钱包地址，注册好域名之后可以添加个人资料，可以去<code>yourname.eth.xyz</code>查看，每次更新资料都会有gas费</p>
+<p>如果你要使用ens域名跳转静态博客网站之类的，可以用IPFS，将静态网站代码上传至IPFS然后填入ens域名的个人资料即可，也可以上传<code>index.html</code>跳转至你的网站</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;refresh&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0; url=https://yoursite&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>推荐使用<a href="https://fleek.xyz/">Fleek</a>，使用IPNS链接方便后续更改，只需支付一次gas费</p>
+<p>之后就可以使用Brave，Opera访问你的域名<code>yourname.eth</code>，也可以在Firefox，Chrome使用<code>yourname.eth.limo</code>访问，比如说我的域名<code>xeron.eth</code>就可以使用<code>xeron.eth.limo</code>在Firefox访问</p>
+
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
 
     </main>
 

@@ -237,84 +237,42 @@
 
     <main id="app">
         
-<ul class="archive-list">
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-09-06</span>
-        <a href="https://blog.040304.xyz/posts/claude-resources/" class="archive-title">Claude Code&amp;Codex 资源推荐</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-30</span>
-        <a href="https://blog.040304.xyz/posts/wayland-input/" class="archive-title">Wayland &#43; Electron 中文输入法在高频输入下乱序的解决方案</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/vitepress-hidden/" class="archive-title">VitePress 隐藏文章功能实现</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/friend-monitor/" class="archive-title">实现自动友链监测功能</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-25</span>
-        <a href="https://blog.040304.xyz/posts/web3-transaction/" class="archive-title">解决 Web3 交互中的 &#34;Replacement Transaction Underpriced&#34; 错误</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-18</span>
-        <a href="https://blog.040304.xyz/posts/pycache-fix/" class="archive-title">如何处理误提交的 `__pycache__`</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-29</span>
-        <a href="https://blog.040304.xyz/posts/trading-thoughts/" class="archive-title">个人交易感悟</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-14</span>
-        <a href="https://blog.040304.xyz/posts/nvim-clipboard/" class="archive-title">在 Nvim 中避免 d 键删除文本时影响剪贴板</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-25</span>
-        <a href="https://blog.040304.xyz/posts/direnv-ssh/" class="archive-title">使用direnv管理本地多个 GitHub 账号 SSH 密钥</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-16</span>
-        <a href="https://blog.040304.xyz/posts/ocr-script/" class="archive-title">ArchLinux Hyprland的OCR截图脚本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-08-02</span>
-        <a href="https://blog.040304.xyz/posts/ens-registration/" class="archive-title">Ens域名注册事项</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-06-22</span>
-        <a href="https://blog.040304.xyz/posts/neovim-replace/" class="archive-title">Neovim批量替换文本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/web-design/" class="archive-title">Web设计的历史轮回</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/text-essence/" class="archive-title">回归文字的本质</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/minimalism-life/" class="archive-title">极简主义的生活哲学</a>
-    </li>
-    
-</ul>
+<article>
+    <div class="post-header">
+        <h1 class="post-title">解决 Web3 交互中的 &#34;Replacement Transaction Underpriced&#34; 错误</h1>
+        <div class="post-meta">发布于 2025-01-25</div>
+    </div>
+    <div class="post-content">
+        <h2 id="昨天在binance的web3钱包里交互时遇到了一个-replacement-transaction-underpriced-错误通过提高gas费用解决">昨天在Binance的web3钱包里交互时遇到了一个 &ldquo;replacement transaction underpriced&rdquo; 错误。通过提高gas费用解决</h2>
+<h2 id="什么是-replacement-transaction-underpriced-错误">什么是 replacement transaction underpriced 错误？</h2>
+<p>与以太坊或其他 EVM 兼容区块链交互时，可能会遇到这样的错误：&ldquo;replacement transaction underpriced&rdquo;。这个问题通常发生在试图用新的交易替换挂起的交易时，新交易的gas费设置得不够高，导致网络拒绝接收。以太坊网络支持“交易替换机制”（Transaction Replacement）。当一笔交易尚未被打包时，您可以发送一笔相同 nonce 的新交易来替换旧交易。但以太坊规定，新交易的gas费必须比旧交易至少高出10%。否则，矿工会拒绝处理这笔交易，从而产生replacement transaction underpriced 错误</p>
+<h2 id="可能的触发场景">可能的触发场景</h2>
+<ol>
+<li>
+<p>手动调整 Gas 费用过低：当替换交易时，未增加足够的 Gas 价格或动态费用</p>
+</li>
+<li>
+<p>网络拥堵：链上拥堵导致交易费大幅波动，新交易的费用不够吸引矿工</p>
+</li>
+</ol>
+<h2 id="解决方法">解决方法</h2>
+<ol>
+<li>
+<p>增加10%的gas费，替换上个交易</p>
+</li>
+<li>
+<p>如果不急着交易，等待上个交易完成再进行</p>
+</li>
+<li>
+<p>如果希望取消挂起的交易，可以创建一笔 相同 nonce 的新交易，将目标地址设置为自己的地址，金额设置为 0，并提高 Gas 费用</p>
+</li>
+</ol>
+
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
 
     </main>
 

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Su 素</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22></svg>">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --meta-color: #a0a0a0;
+            --link-color: #d0d0d0;
+            --accent-color: #f0f0f0;
+            --font-main: "Georgia", "Times New Roman", "Songti SC", "SimSun", serif;
+            --font-mono: "Menlo", "Monaco", "Courier New", monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-size: 16px;
+        }
+
+         
+        header {
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .site-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--meta-color);
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+         
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: all 0.2s;
+        }
+        a:hover {
+            background-color: rgba(208, 208, 208, 0.1);
+        }
+
+         
+        .archive-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .archive-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+        }
+
+        .archive-date {
+            font-family: var(--font-mono);
+            color: var(--meta-color);
+            font-size: 0.85em;
+            width: 110px;
+            flex-shrink: 0;
+        }
+
+        .archive-title {
+            font-weight: normal;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+         
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .post-meta {
+            font-family: var(--font-mono);
+            color: var(--meta-color);
+            font-size: 0.9em;
+        }
+
+        .post-content {
+            text-align: justify;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5em;
+        }
+
+        .post-content h2 {
+            font-size: 1.4em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+        .post-content blockquote {
+            margin: 1.5em 0;
+            padding: 1em 1.5em;
+            background-color: rgba(255, 255, 255, 0.05);
+            font-style: italic;
+            color: var(--meta-color);
+        }
+
+        .post-content blockquote p {
+            margin-bottom: 0;
+        }
+
+         
+        .about-section {
+            margin-bottom: 50px;
+        }
+
+        .friends-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .friend-item {
+            margin-bottom: 15px;
+        }
+
+        .friend-item a {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .friend-desc {
+            color: var(--meta-color);
+            font-size: 0.9em;
+        }
+
+         
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--meta-color);
+            font-family: var(--font-mono);
+        }
+
+         
+        .post-content pre,
+        .post-content .highlight {
+            position: relative;
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 1.5em 0;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .post-content pre code,
+        .post-content .highlight pre {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            color: var(--text-color);
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
+
+         
+        .post-content .highlight pre {
+            background: none !important;
+            color: var(--text-color) !important;
+        }
+
+        .post-content .highlight pre code span {
+            display: inline;
+        }
+
+  
+         
+        .post-content :not(pre) > code {
+            background-color: #404040;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <a href="https://blog.040304.xyz/" class="site-title">Su 素</a>
+    <nav>
+        <a href="https://blog.040304.xyz/">首页</a>
+        <a href="https://blog.040304.xyz/about/">关于 & 友链</a>
+    </nav>
+</header>
+
+    <main id="app">
+        
+<article>
+    <div class="post-header">
+        <h1 class="post-title">Claude Code&amp;Codex 资源推荐</h1>
+        <div class="post-meta">发布于 2025-09-06</div>
+    </div>
+    <div class="post-content">
+        <h2 id="为什么选择-claude-code">为什么选择 Claude Code？</h2>
+<p><code>claude code</code> 出了好久了，刚开始我虽然喜欢使用终端，但是对 <code>claude code</code> 无感（主要是因为贵），一直使用 <code>roo code</code> <code>cline</code> 这种 vscode 扩展。后来 <code>cc</code>（代指 <code>claude code</code> 下文皆是）被逆向，可以自定义模型之后我才开始尝试，发现 <code>cc</code> 居然很好用</p>
+<p>最吸引我的还是指令系统，作为一个命令行重度用户，没有什么比不用鼠标到处点击更爽了。其次是 <code>cc</code> 只需要一个终端就能跑，比 <code>cursor</code> <code>cline</code> 这种自由度高。<code>cc</code> 的提示词调教比较好，使用相同的模型，<code>cc</code> 相比较其他编程 agent 来说效果更好。这几点也让我彻底转向 <code>cc</code></p>
+<h2 id="资源分享">资源分享</h2>
+<p>我整理了一下我使用 <code>cc</code> 的一些实用资源</p>
+<ul>
+<li>
+<p><strong><a href="https://linux.do/t/topic/931722">CLAUDE.md</a></strong>：这个帖子是佬友整理的 <code>CLAUDE.md</code> ，效果很好，结合很多编程实用的 mcp 和 子代理 agent ，规范 <code>cc</code> 的输出</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/musistudio/claude-code-router.git">claude-code-router</a></strong>：自定义 <code>cc</code> 模型，无需多言因为这个才用 <code>cc</code></p>
+</li>
+<li>
+<p><strong><a href="https://github.com/wshobson/agents.git">agents</a></strong>：<code>cc</code> 子代理，配合佬友的 <code>CLAUDE.md</code></p>
+</li>
+<li>
+<p><strong><a href="https://github.com/bmad-code-org/BMAD-METHOD.git">BMAD-METHOD</a></strong>：bmad-methon 是敏捷人工智能开发规范。我最常用的是里面一个 <code>analyst</code> 的 agent，我喜欢用它做头脑风暴。其他的 agent 我不是很常用，它的 <code>sm -&gt; dev -&gt; qa</code> 迭代我倒是挺喜欢，但是 agent 太多，上手有点难度</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/Pimzino/spec-workflow-mcp.git">spec-workflow-mcp</a></strong>：规范开发的 mcp，fork 的 <code>kiro</code> 的特色功能。先创建 <code>requirements</code> 需求文档，然后创建 <code>design</code> 设计文档，最后遵循这两个文档创建 <code>tasks</code>，把复杂的任务拆分成小步骤实现</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/oraios/serena.git">serena</a></strong>：<code>serena</code> 可以语义检索，精准编辑代码，还可以减少 token 用量，效率更高。这个 mcp 一定要用，接入 <code>cc</code> 直接</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><ul>
+<li><strong><a href="https://github.com/UfoMiao/zcf.git">zcf</a></strong>：<code>zcf</code> 也是 linuxdo 里的佬友开发的，旨在为 <code>cc</code> 新手提供开箱即用的体验，推荐入门使用，现在也支持 <code>codex</code></li>
+</ul>
+<h2 id="mcp-配置参考">MCP 配置参考</h2>
+<p>下面我贴一下我常用的 mcp 可以参考, 有的需要具体目录配置我就不贴出来</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// .mcp.json
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mcpServers&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;context7&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;-y&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@upstash/context7-mcp@latest&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;open-websearch&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;-y&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;open-websearch@latest&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;MODE&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;DEFAULT_SEARCH_ENGINE&#34;</span>: <span style="color:#e6db74">&#34;duckduckgo&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;ALLOWED_SEARCH_ENGINES&#34;</span>: <span style="color:#e6db74">&#34;duckduckgo,bing,brave&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;mcp-deepwiki&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;-y&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;mcp-deepwiki@latest&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Playwright&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;-y&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@playwright/mcp@latest&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;serena&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;uvx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--from&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;git+https://github.com/oraios/serena&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;serena&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;start-mcp-server&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--context&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ide-assistant&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;sequential-thinking&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npx&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;-y&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@modelcontextprotocol/server-sequential-thinking&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;fetch&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;mcp-server-fetch&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;uvx&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># ~/.codex/config.toml</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.sequential-thinking]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;npx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;-y&#34;, &#34;@modelcontextprotocol/server-sequential-thinking&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.context7]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;npx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;-y&#34;, &#34;@upstash/context7-mcp&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.memory]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;npx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;-y&#34;, &#34;@modelcontextprotocol/server-memory&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.duckduckgo-search]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;stdio&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;uvx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;duckduckgo-mcp-server&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.fetch]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;uvx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;mcp-server-fetch&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.serena]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;uvx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;--from&#34;, &#34;git+https://github.com/oraios/serena&#34;, &#34;serena&#34;, &#34;start-mcp-server&#34;, &#34;--context&#34;, &#34;codex&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[mcp_servers.chrome-devtools]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;npx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;-y&#34;, &#34;chrome-devtools-mcp@latest&#34;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startup_timeout_ms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">60000</span>
+</span></span></code></pre></div><h2 id="自用的-claudemd">自用的 <code>CLAUDE.md</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># 你是一个专业 AI 编程助手
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">**description:**</span> <span style="color:#e6db74">`专业AI编程助手，提供结构化六阶段开发工作流（研究→构思→计划→执行→优化→评审），集成MCP服务与质量把关体系，面向专业开发者`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 特别约束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">本文档及所有交互中，除非用户明确授权，否则 **禁止输出任何 emoji 或表情符号**。
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">所有输出必须保持专业、简洁、纯文本风格。
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 上下文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 当前任务：<span style="color:#e6db74">`$ARGUMENTS`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 使用结构化六阶段开发工作流（研究→构思→计划→执行→优化→评审）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 内置质量把关与 MCP 工具集成
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 面向专业开发者，交互简洁、专业
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **前端项目统一使用 <span style="color:#e6db74">`pnpm`</span> 作为包管理器**
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **Python 项目统一使用 <span style="color:#e6db74">`uv`</span> 作为包管理器**
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **简单、低风险、可直接执行的任务（如代码片段修复、小函数实现、轻量查询等）可直接运行，无需进入完整工作流或征询用户确认**
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 你的角色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>你是 IDE 的 AI 编程助手。
+</span></span><span style="display:flex;"><span>职责：以中文执行结构化开发工作流，并在每阶段主动请求用户确认。
+</span></span><span style="display:flex;"><span>语气：专业、简洁、无冗余解释。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### [沟通规则]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 回复以 <span style="color:#e6db74">`[模式：X]`</span> 开头，初始为 <span style="color:#e6db74">`[模式：研究]`</span>。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 核心阶段按以下顺序严格流转（除非用户指令跳转）：
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">`研究 → 构思 → 计划 → 执行 → 优化 → 评审`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> <span style="font-weight:bold">**若判断任务属于“简单任务”（满足以下条件），则可直接执行，无需启动完整工作流：**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 不涉及文件系统、项目结构或持久变更；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 不需要跨多阶段推理；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 无安全或质量风险；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 输出明确且自解释（如单函数、配置调整、命令行示例等）。
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 执行前后仍应保持输出专业与安全。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 核心工作流详解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>| 阶段   | 模式标签      | 主要任务                                   |
+</span></span><span style="display:flex;"><span>| ---- | --------- | -------------------------------------- |
+</span></span><span style="display:flex;"><span>| 1 研究 | <span style="color:#e6db74">`[模式：研究]`</span> | 评估需求完整性（0–10分），缺信息则提出补充问题              |
+</span></span><span style="display:flex;"><span>| 2 构思 | <span style="color:#e6db74">`[模式：构思]`</span> | 生成至少两种可行方案并评估优劣                        |
+</span></span><span style="display:flex;"><span>| 3 计划 | <span style="color:#e6db74">`[模式：计划]`</span> | 制定详细步骤清单（文件、逻辑、预期结果），用户批准后执行           |
+</span></span><span style="display:flex;"><span>| 4 执行 | <span style="color:#e6db74">`[模式：执行]`</span> | 严格按计划实现代码，关键步骤写入 <span style="color:#e6db74">`.claude/plan/任务名.md`</span> |
+</span></span><span style="display:flex;"><span>| 5 优化 | <span style="color:#e6db74">`[模式：优化]`</span> | 自动审查执行结果，提出改进建议，经确认后优化                 |
+</span></span><span style="display:flex;"><span>| 6 评审 | <span style="color:#e6db74">`[模式：评审]`</span> | 对照计划评估质量，输出总结并请求最终确认                   |
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 主动反馈规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 每阶段结束都必须请求用户确认。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 若用户反馈非空，需调整方案并再次确认。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 仅当用户明确结束时方可终止流程。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 任务完成前必须征求最终确认。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> <span style="font-weight:bold">**对于简单任务，若满足“直接执行条件”，可跳过确认步骤并立即返回结果。**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 自动上下文收集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>无需询问的自动信息：
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 技术栈与框架版本（从配置文件提取）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 项目结构与代码规范
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 构建与测试命令（从 CLAUDE.md 获取）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 质量标准与执行约束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 回复必须使用中文
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 禁止生成恶意或无授权代码
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 编码前必须完成上下文理解与分析
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 执行前强制 sequential-thinking 分析（简单任务除外）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 每次执行结果均需 quality review
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 工程原则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **设计：** 遵循 SOLID、DRY、关注点分离
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **代码：** 清晰命名、合理抽象、必要注释
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **性能：** 优化复杂度与内存使用
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> **测试：** 设计可测试代码，验证边界与错误
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## SUBAGENT SELECTION
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>════════════════════
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>必须主动调用合适子代理，以确保在不同技术领域中高质量执行任务。
+</span></span><span style="display:flex;"><span>当检测到任务涉及以下领域时，必须自动调用对应子代理：
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> Python 项目 → <span style="color:#e6db74">`python-pro`</span>（使用 <span style="color:#e6db74">`uv`</span> 作为包管理器）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> C# / .NET 项目 → <span style="color:#e6db74">`csharp-pro`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> JavaScript / TypeScript 项目 → <span style="color:#e6db74">`javascript-pro`</span> / <span style="color:#e6db74">`typescript-pro`</span>（使用 <span style="color:#e6db74">`pnpm`</span> 作为包管理器）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> Unity 开发 → <span style="color:#e6db74">`unity-developer`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 前端开发 → <span style="color:#e6db74">`frontend-developer`</span>（使用 <span style="color:#e6db74">`pnpm`</span>）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 后端架构 → <span style="color:#e6db74">`backend-architect`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 云架构 → <span style="color:#e6db74">`cloud-architect`</span> / <span style="color:#e6db74">`hybrid-cloud-architect`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 数据库优化 → <span style="color:#e6db74">`database-optimizer`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 安全审计 → <span style="color:#e6db74">`security-auditor`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 代码审查 → <span style="color:#e6db74">`code-reviewer`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 测试自动化 → <span style="color:#e6db74">`test-automator`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 性能优化 → <span style="color:#e6db74">`performance-engineer`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> DevOps 部署 → <span style="color:#e6db74">`deployment-engineer`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 文档编写 → <span style="color:#e6db74">`docs-architect`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> 错误调试 → <span style="color:#e6db74">`debugger`</span> / <span style="color:#e6db74">`error-detective`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 包管理规范
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>为保持开发一致性与依赖稳定性，必须遵循以下包管理策略：
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="font-weight:bold">**前端与 Node.js 项目**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 使用 <span style="color:#e6db74">`pnpm`</span> 作为统一包管理器
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 禁止使用 <span style="color:#e6db74">`npm`</span> 或 <span style="color:#e6db74">`yarn`</span> 安装依赖
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">*</span> 默认执行命令示例：
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     ``<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     pnpm install
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     pnpm run dev
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     pnpm run build
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. **Python 项目**
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   * 使用 `</span>uv<span style="color:#e6db74">` 作为包与环境管理工具
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   * 禁止使用 `</span>pip<span style="color:#e6db74">` 或 `</span>poetry<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   * 默认执行命令示例：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     `</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     uv sync
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     uv run main.py
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     uv add requests
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">---
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### 最终执行结构
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">project/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">├── .claude/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   └── plan/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│       └── 任务名.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">├── src/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   ├── components/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   ├── services/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   ├── utils/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   └── types/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">├── tests/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   ├── unit/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   ├── integration/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">│   └── e2e/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">└── README.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>``
+</span></span></code></pre></div><h2 id="相关链接">相关链接</h2>
+<ul>
+<li><a href="https://linux.do/t/topic/931722">https://linux.do/t/topic/931722</a></li>
+<li><a href="https://github.com/musistudio/claude-code-router.git">https://github.com/musistudio/claude-code-router.git</a></li>
+<li><a href="https://github.com/wshobson/agents.git">https://github.com/wshobson/agents.git</a></li>
+<li><a href="https://github.com/bmad-code-org/BMAD-METHOD.git">https://github.com/bmad-code-org/BMAD-METHOD.git</a></li>
+<li><a href="https://github.com/Pimzino/spec-workflow-mcp.git">https://github.com/Pimzino/spec-workflow-mcp.git</a></li>
+<li><a href="https://github.com/oraios/serena.git">https://github.com/oraios/serena.git</a></li>
+<li><a href="https://github.com/UfoMiao/zcf.git">https://github.com/UfoMiao/zcf.git</a></li>
+</ul>
+
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
+
+    </main>
+
+    <footer>
+    &copy; 2025 Su 素. Text Only.
+</footer>
+
+    </body>
+</html>
