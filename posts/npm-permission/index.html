@@ -237,89 +237,52 @@
 
     <main id="app">
         
-<ul class="archive-list">
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-12-11</span>
-        <a href="https://blog.040304.xyz/posts/npm-permission/" class="archive-title">解决 NPM 全局安装权限问题</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-09-06</span>
-        <a href="https://blog.040304.xyz/posts/claude-resources/" class="archive-title">Claude Code&amp;Codex 资源推荐</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-30</span>
-        <a href="https://blog.040304.xyz/posts/wayland-input/" class="archive-title">Wayland &#43; Electron 中文输入法在高频输入下乱序的解决方案</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/vitepress-hidden/" class="archive-title">VitePress 隐藏文章功能实现</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-08-24</span>
-        <a href="https://blog.040304.xyz/posts/friend-monitor/" class="archive-title">实现自动友链监测功能</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-25</span>
-        <a href="https://blog.040304.xyz/posts/web3-transaction/" class="archive-title">解决 Web3 交互中的 &#34;Replacement Transaction Underpriced&#34; 错误</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2025-01-18</span>
-        <a href="https://blog.040304.xyz/posts/pycache-fix/" class="archive-title">如何处理误提交的 `__pycache__`</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-29</span>
-        <a href="https://blog.040304.xyz/posts/trading-thoughts/" class="archive-title">个人交易感悟</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-11-14</span>
-        <a href="https://blog.040304.xyz/posts/nvim-clipboard/" class="archive-title">在 Nvim 中避免 d 键删除文本时影响剪贴板</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-25</span>
-        <a href="https://blog.040304.xyz/posts/direnv-ssh/" class="archive-title">使用direnv管理本地多个 GitHub 账号 SSH 密钥</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-10-16</span>
-        <a href="https://blog.040304.xyz/posts/ocr-script/" class="archive-title">ArchLinux Hyprland的OCR截图脚本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-08-02</span>
-        <a href="https://blog.040304.xyz/posts/ens-registration/" class="archive-title">Ens域名注册事项</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2024-06-22</span>
-        <a href="https://blog.040304.xyz/posts/neovim-replace/" class="archive-title">Neovim批量替换文本</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/web-design/" class="archive-title">Web设计的历史轮回</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/text-essence/" class="archive-title">回归文字的本质</a>
-    </li>
-    
-    <li class="archive-item">
-        <span class="archive-date">2023-10-24</span>
-        <a href="https://blog.040304.xyz/posts/minimalism-life/" class="archive-title">极简主义的生活哲学</a>
-    </li>
-    
+<article>
+    <div class="post-header">
+        <h1 class="post-title">解决 NPM 全局安装权限问题</h1>
+        <div class="post-meta">发布于 2025-12-11</div>
+    </div>
+    <div class="post-content">
+        <p>在使用 <code>npm update -g</code> 或 <code>npm install -g</code> 安装全局包时，遇到了 <code>EACCES: permission denied</code> 错误</p>
+<h2 id="问题分析">问题分析</h2>
+<p>错误信息显示 NPM 尝试写入 <code>/usr/lib/node_modules</code> 目录时被拒绝，这是一个系统目录，普通用户没有写入权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm error code EACCES
+</span></span><span style="display:flex;"><span>npm error syscall rename
+</span></span><span style="display:flex;"><span>npm error path /usr/lib/node_modules/npm/node_modules/env-paths
+</span></span><span style="display:flex;"><span>npm error errno -13
+</span></span><span style="display:flex;"><span>npm error Error: EACCES: permission denied
+</span></span></code></pre></div><p>虽然可以使用 <code>sudo</code> 来临时解决，但这会导致安全问题和权限混乱，最佳实践是将 NPM 的全局目录迁移到用户主目录</p>
+<h2 id="解决方案">解决方案</h2>
+<h3 id="1-创建用户级全局目录">1. 创建用户级全局目录</h3>
+<p>在终端中创建一个属于你的目录来存放全局包：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/.npm-global
+</span></span></code></pre></div><h3 id="2-配置-npm-使用新目录">2. 配置 NPM 使用新目录</h3>
+<p>修改 NPM 配置，让它使用刚创建的目录：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm config set prefix <span style="color:#e6db74">&#39;~/.npm-global&#39;</span>
+</span></span></code></pre></div><h3 id="3-添加到环境变量">3. 添加到环境变量</h3>
+<p>首先确认你使用的 Shell 类型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $SHELL
+</span></span></code></pre></div><p>根据结果编辑对应的配置文件：</p>
+<ul>
+<li>如果是 <code>/bin/bash</code>，编辑 <code>~/.bashrc</code></li>
+<li>如果是 <code>/bin/zsh</code>，编辑 <code>~/.zshrc</code></li>
 </ul>
+<p>在文件末尾添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>~/.npm-global/bin:$PATH
+</span></span></code></pre></div><h3 id="4-使配置生效">4. 使配置生效</h3>
+<p>重新加载 Shell 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者</span>
+</span></span><span style="display:flex;"><span>source ~/.zshrc
+</span></span></code></pre></div><h3 id="5-重新安装全局包">5. 重新安装全局包</h3>
+<p>现在可以不使用 <code>sudo</code> 直接安装全局包了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -g @musistudio/claude-code-router
+</span></span></code></pre></div>
+    </div>
+    <div style="margin-top:50px; text-align:center;">
+        <a href="https://blog.040304.xyz/" style="cursor:pointer; font-family:var(--font-mono)">← 返回列表</a>
+    </div>
+</article>
 
     </main>
 
